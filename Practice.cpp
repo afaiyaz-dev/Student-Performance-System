@@ -13,11 +13,5 @@ int main(){
     int X;
     vector <student> st;
 
-    while(true){
-        cout<<"Ghelp";
-        cout<<"Add a new student";
-        cout<<"Display all students";
-        cout<<"Save records to file";
-        cout<<"Exit";
-    }
+    cout<<"Enter student name";
 }
