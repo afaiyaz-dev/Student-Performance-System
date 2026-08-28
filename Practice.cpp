@@ -11,23 +11,43 @@ struct student{
 
 int main(){
     int input;
-    cout<<"Do you want to go to the menu "<<endl;
-    cout<<"press 'Y' for yes or 'N' for no "<<endl;
-    cin>>input;
-
-    while( input == 'Y' || input == 'y'){
-        cout<<"\t\tMenu";
-        cout<<"1. Add New Student"<<endl;
-        cout<<"2. Display All Students"<<endl;
-        cout<<"3. Search Student by Roll Number"<<endl;
-        cout<<"4. Save Records to File"<<endl;
+    
+    do{
+        cout<<"/n/tMenu"<<endl;
+        cout<<"1. Add a new student"<<endl;
+        cout<<"2. Display all students"<<endl;
+        cout<<"3. search student by roll no"<<endl;
+        cout<<"4. Save records to file"<<endl;
         cout<<"5. Exit"<<endl;
-        int choice;
-        cout<<"Enter the number to perform the following operations";
-        cin>>choice;
-        switch(choice){
-            
-        }
+        cout<<"Enter a number to perform operation";
+        cin>>input;
 
-    }
+        switch(input){
+            case 1:
+            //add student()
+            break;
+
+            case 2:
+            //Display all students();
+            break;
+
+            case 3:
+            //search student by roll no()
+            break;
+
+            case 4:
+            //save records to files();
+            break;
+
+            case 5:
+            cout<<"Exiting program..."<<endl;
+            break;
+
+            default:
+            cout<<"Invalid input... Try again";
+            break;
+        }
+    }while(input!=5);
+    
+    return 0;
 }
