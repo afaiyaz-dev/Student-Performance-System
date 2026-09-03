@@ -13,7 +13,8 @@ struct student{
 void addstudent(vector <student> & students){
     student s;
     cout<<"Enter student name"<<endl;
-    cin>>s.name;
+    cin.ignore( numeric_limits <streamsize> :: max(), '\n');
+    getline(cin,s.name);
     cout<<"Enter student rollno"<<endl;
     cin>>s.rollno;
     int totalsubject;
@@ -30,9 +31,17 @@ void addstudent(vector <student> & students){
         }
     }while (true);
     
+    vector <string> subjectnames;
+    string subject;
+    for( int i=0; i<totalsubject; i++ ){
+        cout<<"Enter subject" << i+1 << "name" <<endl;
+        cin>>subject;
+        subjectnames.push_back(subject);
+    }
+
     for(int i=0; i<totalsubject; i++){
         float tempmarks;
-        cout<<"Enter marks of subject "<< i+1<<endl;
+        cout<<"Enter marks of "<< subjectnames[i] <<endl;
         cin>>tempmarks;
         s.marks.push_back(tempmarks);
     }
