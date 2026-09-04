@@ -1,4 +1,5 @@
 #include<iostream>
+#include<fstream>
 #include<vector>
 #include<limits>
 using namespace std;
@@ -34,7 +35,7 @@ void addstudent(vector <student> & students){
     vector <string> subjectnames;
     string subject;
     for( int i=0; i<totalsubject; i++ ){
-        cout<<"Enter subject" << i+1 << "name" <<endl;
+        cout<<"Enter subject " << i+1 << " name" <<endl;
         cin>>subject;
         subjectnames.push_back(subject);
     }
@@ -70,6 +71,16 @@ void addstudent(vector <student> & students){
 
     students.push_back(s);
 
+}
+
+void file( vector <student> & filesave){
+    student s;
+    ofstream file("student data file.txt");
+    if(file.is_open()){
+        for( student datafile : filesave){
+            
+        } 
+    }
 }
 
 int main(){
