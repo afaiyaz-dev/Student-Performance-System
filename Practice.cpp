@@ -95,6 +95,17 @@ void file( vector <student> & filesave , vector <string> & subjectnames){
     }
 }
 
+string display(vector <student> & studnets){
+    ifstream file("student data file.txt"){
+        if(! infile.is-open()) return;
+
+        student s;
+        while(getline(infile,s.name)){
+            int 
+        }
+    }
+}
+
 int main(){
     int input;
     vector <student> mainstd;
