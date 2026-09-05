@@ -73,19 +73,32 @@ void addstudent(vector <student> & students){
 
 }
 
-void file( vector <student> & filesave){
-    student s;
+void file( vector <student> & filesave , vector <string> & subjectnames){
     ofstream file("student data file.txt");
     if(file.is_open()){
         for( student datafile : filesave){
-            
-        } 
+            int totalmarks=0;
+            file<<"Student name\t= "<< datafile.name<<endl;
+            file<<"Student rollno\t= "<< datafile.rollno<<endl;
+            for(float stdmarks : datafile.marks){
+                for( string stdsubject : subjectnames){
+                    file<< stdsubject << " = " << stdmarks << endl;
+                }
+                totalmarks += stdmarks;
+            }
+            file<<"Total Marks = " << totalmarks<<endl;
+            file<<"Grade = "<< datafile.grade<<endl;
+        }
+        file.close();
+        cout<<"Data has been saved sucessfully."<<endl;
+        cout<<"Closing file...."<<endl;
     }
 }
 
 int main(){
     int input;
     vector <student> mainstd;
+    vector <string> subjectname;
     
     do{
         cout<<"\n\ntMenu"<<endl;
@@ -94,7 +107,7 @@ int main(){
         cout<<"3. search student by roll no"<<endl;
         cout<<"4. Save records to file"<<endl;
         cout<<"5. Exit"<<endl;
-        cout<<"Enter a number to perform operation";
+        cout<<"Enter a number to perform operation"<<endl;
 
         if(!(cin >> input)){
             cout<<"Invalid input! please enter a valid number";
@@ -117,7 +130,7 @@ int main(){
             break;
 
             case 4:
-            //save records to files();
+            file(mainstd,subjectname);
             break;
 
             case 5:
