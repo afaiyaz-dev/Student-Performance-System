@@ -73,6 +73,44 @@ void addstudent(vector <student> & students){
 
 }
 
+void search (vector <student> & searching ){
+    int target;
+    cout<<"Enter student roll number "<<endl;
+    cin>>target;
+    int low  = 0;
+    int high = searching.size()-1;
+    int resultindex=-1;
+
+    while (low <=high){
+        int mid = low + (high - low )/2;
+        if(  searching[mid].rollno == target){
+            resultindex=mid;
+            break;
+        }
+        else if(searching[mid].rollno < target){
+            low = mid + 1;
+        }
+        else{
+            high = mid - 1;
+        }
+    }
+    if(resultindex != -1){
+        cout<<"Result found you searched for roll no = "<< searching[resultindex].rollno<<endl;
+        cout<<"Student namae = "<< searching[resultindex].name<<endl;
+        float totalnumber=0;
+        for ( float totmarks : searching[resultindex].marks ){
+            totalnumber += totmarks;
+        }
+        cout<<searching[resultindex].name << " Total marks = " << totalnumber;
+        cout<<searching[resultindex].name << " Grade = " << searching[resultindex].grade;
+    }
+    else{
+        cout<<"Result not found try again..."<<endl;
+    }
+    
+
+}
+
 void file( vector <student> & filesave , vector <string> & subjectnames){
     ofstream file("student data file.txt");
     if(file.is_open()){
@@ -95,16 +133,6 @@ void file( vector <student> & filesave , vector <string> & subjectnames){
     }
 }
 
-string display(vector <student> & studnets){
-    ifstream file("student data file.txt"){
-        if(! infile.is-open()) return;
-
-        student s;
-        while(getline(infile,s.name)){
-            int 
-        }
-    }
-}
 
 int main(){
     int input;
@@ -112,12 +140,11 @@ int main(){
     vector <string> subjectname;
     
     do{
-        cout<<"\n\ntMenu"<<endl;
+        cout<<"\n\n\tMenu"<<endl;
         cout<<"1. Add a new student"<<endl;
-        cout<<"2. Display all students"<<endl;
-        cout<<"3. search student by roll no"<<endl;
-        cout<<"4. Save records to file"<<endl;
-        cout<<"5. Exit"<<endl;
+        cout<<"2. search student by roll no"<<endl;
+        cout<<"3. Save records to file"<<endl;
+        cout<<"4. Exit"<<endl;
         cout<<"Enter a number to perform operation"<<endl;
 
         if(!(cin >> input)){
@@ -133,18 +160,14 @@ int main(){
             break;
 
             case 2:
-            //Display all students();
+            search(mainstd);
             break;
 
             case 3:
-            //search student by roll no()
-            break;
-
-            case 4:
             file(mainstd,subjectname);
             break;
 
-            case 5:
+            case 4:
             cout<<"Exiting program..."<<endl;
             break;
 
@@ -152,7 +175,7 @@ int main(){
             cout<<"Invalid input... Try again";
             break;
         }
-    }while(input!=5);
+    }while(input!=4);
     
     return 0;
 }
